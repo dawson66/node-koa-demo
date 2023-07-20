@@ -1,13 +1,13 @@
 const Router = require('koa-router');
 const mongoose = require('../db/mongooseDriver')
 
-const userController = require('../controller/userController')
+const { login, getUserInfo } = require('../controller/user.controller')
 
-const userRouter = new Router();
+const router = new Router({ prefix: '/users' });
 
 // 登录
-userRouter.post('/login', userController.login)
+router.post('/login', login)
 
-userRouter.get('/userinfo', userController.getUserInfo)
+router.get('/userinfo', getUserInfo)
 
-module.exports = userRouter
+module.exports = router
